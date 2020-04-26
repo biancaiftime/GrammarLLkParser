@@ -179,7 +179,6 @@ namespace Proiect2
             while(queue.Count > 0 && !finished)
             {
                 var l = queue.Dequeue();
-                finished = true;
                 foreach (char c in l)
                 {
                     if (!c.ToString().Equals(c.ToString().ToLower()))
@@ -195,8 +194,8 @@ namespace Proiect2
                                     if (!words.Contains(pp))
                                     {
                                         words.Add(pp);
-                                        finished = false;
                                     }
+                                    else finished = true;
                                 }
 
                                 else if (pp.Length > k && !HasNonterminal(pp.Substring(0, k)))
@@ -204,8 +203,8 @@ namespace Proiect2
                                     if (!words.Contains(pp.Substring(0, k)))
                                     {
                                         words.Add(pp.Substring(0, k));
-                                        finished = false;
                                     }
+                                    else finished = true;
                                 }
                                 else queue.Enqueue(pp);
                             });
